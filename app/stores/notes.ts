@@ -49,5 +49,9 @@ export const useNotesStore = defineStore('notes', () => {
     return true
   }
 
-  return { notes, sortedNotes, getById, createNote, updateNote, deleteNote }
+  function setNotes(list: Note[]) {
+    notes.value = list
+  }
+
+  return { notes, sortedNotes, getById, createNote, updateNote, deleteNote, setNotes }
 })

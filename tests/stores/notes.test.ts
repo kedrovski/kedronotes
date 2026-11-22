@@ -74,6 +74,16 @@ describe('notes store', () => {
     expect(store.deleteNote(note.id)).toBe(false)
   })
 
+  it('replaces the whole list with setNotes', () => {
+    const store = useNotesStore()
+    store.createNote(makeInput())
+
+    const loaded = [{ id: 'x', title: 'Из хранилища', todos: [], createdAt: 1, updatedAt: 1 }]
+    store.setNotes(loaded)
+
+    expect(store.notes).toEqual(loaded)
+  })
+
   it('sorts notes by updatedAt, newest first', () => {
     vi.useFakeTimers()
     const store = useNotesStore()
